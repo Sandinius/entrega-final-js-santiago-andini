@@ -1,32 +1,53 @@
-
 const productos = [
-    { producto: "fideos", precio: 2000 },
-  { producto: "manteca", precio: 600 },
-  { producto: "leche", precio: 1000 },
-  { producto: "puerro", precio: 1200 },
-  { producto: "albaca", precio: 300 },
+  { id: 1, producto: "fideos", precio: 2000 },
+  { id: 2, producto: "manteca", precio: 600 },
+  { id: 3, producto: "leche", precio: 1000 },
+  { id: 4, producto: "puerro", precio: 1200 },
+  { id: 5, producto: "albaca", precio: 300 },
 ];
-
 const carrito = [];
 
-const sacarPrecio = (comprado) => {
-    const buscaPrecios = productos.find(i => i.producto === comprado);
-    return buscaPrecios ? buscaPrecios.precio : "El producto no se encuentra disponible";
-};
+function renderizarPagina() {
+  productos.forEach((producto) => {
+    let contenedor = document.createElement("div");
+    contenedor.classList.add('productos');
+    contenedor.innerHTML = `<h1>ID: ${producto.id}</h1> <p> Producto: ${producto.producto}</p> <p> $ ${producto.precio}</p> <button id="comprar${producto.id}">Añadir al carrito</button>`;
+    document.body.appendChild(contenedor);
 
-let producto = prompt('Estos son nuestros productos disponibles: fideos, manteca, leche, puerro y albaca. Escribe "fin" para finalizar.');
-
-while (producto.toLowerCase() !== 'fin') {
-    let valor = sacarPrecio(producto);
-    
-    carrito.push({ producto: producto, precio: valor });
-    
-    producto = prompt('Estos son nuestros productos disponibles: fideos, manteca, leche, puerro y albaca. Escribe "fin" para finalizar.');
-}
-let mensajeCarrito = 'Carrito:\n';
-for (const item of carrito) {
-    mensajeCarrito += `Producto: ${item.producto}, Precio: ${item.precio}\n`;
+    let boton = document.getElementById(`comprar${producto.id}`);
+    boton.addEventListener("click", () => agregarProductoAlCarrito(producto.id, producto.producto, producto.precio));
+  });
 }
 
+function agregarProductoAlCarrito(id, nombre, precio) {
+  const productoEnCarrito = carrito.find(item => item.id === id);
+  
+  if (productoEnCarrito) {
+    productoEnCarrito.cantidad++;
+    productoEnCarrito.total = productoEnCarrito.precio * productoEnCarrito.cantidad;
+    localStorage.setItem("EnCarrito", JSON.stringify(carrito));
+  } else {
+    carrito.push({ id: id, nombre: nombre, precio: precio, cantidad: 1, total: precio });
+  }
+  renderizarCarrito();
+}
 
-alert(`Este es su carrito ${mensajeCarrito}`)
+function renderizarCarrito() {
+  const carritoDiv = document.getElementById("carrito");
+  carritoDiv.innerHTML = ' '; 
+  
+  carrito.forEach((item) => {
+    let carritoItem = document.createElement("div");
+    carritoItem.innerHTML = `<p> Producto: ${item.nombre}</p> <p> Cantidad: ${item.cantidad}</p> <p> Total: $ ${item.total}</p>`;
+    carritoDiv.appendChild(carritoItem);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  renderizarPagina();
+});
+
+
+
+
+
