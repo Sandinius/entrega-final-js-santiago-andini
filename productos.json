@@ -8,48 +8,48 @@
 
 { 
   "id": 2, 
-  "foto":"/images/manteca.png",
+  "foto":"images/manteca.png",
   "producto": "manteca", 
   "precio": 600 
 },
 
 { 
   "id": 3, 
-  "foto":"/images/leche.png",
+  "foto":"images/leche.png",
   "producto": "leche", 
   "precio": 1000 
 },
 
 { 
   "id": 4, 
-  "foto":"/images/puerro.png",
+  "foto":"images/puerro.png",
   "producto": "puerro", 
   "precio": 1200 
 },
 
 { 
   "id": 5, 
-  "foto":"/images/albaca.png",
+  "foto":"images/albaca.png",
   "producto": "albaca", 
   "precio": 300 
 },
 { 
   "id": 6, 
-  "foto":"/images/cocacola.png",
+  "foto":"images/cocacola.png",
   "producto": "Coca Cola", 
   "precio": 500 
 },
 
 { 
   "id": 7, 
-  "foto":"/images/pepsi.jpg",
+  "foto":"images/pepsi.jpg",
   "producto": "Pepsi", 
   "precio": 600 
 },
 
 { 
   "id": 8, 
-  "foto":"/images/agua.png",
+  "foto":"images/agua.png",
   "producto": "Agua", 
   "precio": 300 
 }
