@@ -1,7 +1,7 @@
 [
 { 
 "id": 1, 
-"foto":"/images/fideos.png",
+"foto":"images/fideos.png",
 "producto": "fideos", 
 "precio": 2000 
 },
