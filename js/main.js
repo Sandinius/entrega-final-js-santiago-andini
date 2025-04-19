@@ -15,10 +15,11 @@ function loadLocalJSONData(nombreDelArchivo) {
     });
 }
 
-nombreDelArchivo = 'productos.json';
+nombreDelArchivo = '/productos.json';
 
 loadLocalJSONData(nombreDelArchivo)
   .then(data =>{
+    console.log(data)
     renderizarPagina(data);
   })
 

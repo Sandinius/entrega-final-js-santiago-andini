@@ -16,3 +16,6 @@ body{
     gap: 4em;
     flex-wrap: wrap;
 }
+img{
+    height: 16vh;
+}
